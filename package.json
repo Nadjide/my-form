@@ -43,5 +43,6 @@
     "@testing-library/react": "^16.2.0",
     "gh-pages": "^6.3.0",
     "react-test-renderer": "^19.0.0"
-  }
+  }, 
+  "homepage": "https://nadjide.github.io/my-form"
 }
