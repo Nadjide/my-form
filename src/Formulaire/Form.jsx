@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button } from '@mui/material';
 
 function Form() {
@@ -12,6 +12,7 @@ function Form() {
     });
 
     const [errors, setErrors] = useState({});
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,10 +37,15 @@ function Form() {
         if (!emailRegex.test(formData.email)) tempErrors.email = "Email invalide";
         if (age < 18) tempErrors.dateNaissance = "Vous devez avoir au moins 18 ans";
         if (!codePostalRegex.test(formData.codePostal)) tempErrors.codePostal = "Code postal invalide";
+        if (!formData.ville) tempErrors.ville = "Ville invalide";
 
         setErrors(tempErrors);
         return Object.keys(tempErrors).length === 0;
     };
+
+    useEffect(() => {
+        setIsFormValid(validate());
+    }, [formData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,7 +67,7 @@ function Form() {
                 helperText={errors.nom}
             />
             <TextField
-                label="Prénom"
+                label="Prenom"
                 variant="outlined"
                 name="prenom"
                 value={formData.prenom}
@@ -96,6 +102,8 @@ function Form() {
                 name="ville"
                 value={formData.ville}
                 onChange={handleChange}
+                error={!!errors.ville}
+                helperText={errors.ville}
             />
             <TextField
                 label="Code postal"
@@ -106,7 +114,7 @@ function Form() {
                 error={!!errors.codePostal}
                 helperText={errors.codePostal}
             />
-            <Button variant="contained" color="primary" type="submit">Envoyer</Button>
+            <Button variant="contained" color="primary" type="submit" disabled={!isFormValid}>Envoyer</Button>
         </Box>
     );
 }
