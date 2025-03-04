@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 
 function Form() {
@@ -20,7 +20,7 @@ function Form() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const validate = () => {
+    const validate = useCallback(() => {
         let tempErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const codePostalRegex = /^[0-9]{5}$/;
@@ -42,11 +42,11 @@ function Form() {
 
         setErrors(tempErrors);
         return Object.keys(tempErrors).length === 0;
-    };
+    }, [formData]);
 
     useEffect(() => {
         setIsFormValid(validate());
-    }, [formData]);
+    }, [formData, validate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
