@@ -74,7 +74,7 @@ test('shows success toaster and clears fields on successful submission', () => {
   fireEvent.click(screen.getByText(/envoyer/i));
   expect(screen.getByText(/formulaire soumis avec succès/i)).toBeInTheDocument();
   expect(screen.getByLabelText('Nom', { exact: true }).value).toBe('');
-  expect(screen.getByLabelText(/prénom/i).value).toBe('');
+  expect(screen.getByLabelText(/prenom/i).value).toBe('');
   expect(screen.getByLabelText(/email/i).value).toBe('');
   expect(screen.getByLabelText(/date de naissance/i).value).toBe('');
   expect(screen.getByLabelText(/ville/i).value).toBe('');
@@ -84,11 +84,11 @@ test('shows success toaster and clears fields on successful submission', () => {
 test('shows corresponding errors in red', () => {
   render(<App />);
   
-  fireEvent.change(screen.getByLabelText(/^nom$/i), { target: { value: '' } });
-  fireEvent.change(screen.getByLabelText(/^prenom$/i), { target: { value: '' } });
-  fireEvent.change(screen.getByLabelText(/^email$/i), { target: { value: '' } });
-  fireEvent.change(screen.getByLabelText(/date de naissance/i), { target: { value: '' } });
-  fireEvent.change(screen.getByLabelText(/^code postal$/i), { target: { value: '' } });
+  fireEvent.change(screen.getByLabelText('Nom', { exact: true }), { target: { value: '' } });
+  fireEvent.change(screen.getByLabelText('Prenom', { exact: true }), { target: { value: '' } });
+  fireEvent.change(screen.getByLabelText('Email', { exact: true }), { target: { value: '' } });
+  fireEvent.change(screen.getByLabelText('Date de naissance', { exact: true }), { target: { value: '' } });
+  fireEvent.change(screen.getByLabelText('Code postal', { exact: true }), { target: { value: '' } });
   
   fireEvent.click(screen.getByText(/envoyer/i));
 

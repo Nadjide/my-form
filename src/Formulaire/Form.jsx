@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField, Button } from '@mui/material';
+import { Box, TextField, Button, Typography } from '@mui/material';
 
 function Form() {
     const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ function Form() {
 
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,7 +52,15 @@ function Form() {
         e.preventDefault();
         if (validate()) {
             localStorage.setItem('formData', JSON.stringify(formData));
-            alert('Formulaire soumis avec succès');
+            setSuccessMessage('Formulaire soumis avec succès');
+            setFormData({
+                nom: '',
+                prenom: '',
+                email: '',
+                dateNaissance: '',
+                ville: '',
+                codePostal: ''
+            });
         }
     };
 
@@ -115,6 +124,7 @@ function Form() {
                 helperText={errors.codePostal}
             />
             <Button variant="contained" color="primary" type="submit" disabled={!isFormValid}>Envoyer</Button>
+            {successMessage && <Typography color="success">{successMessage}</Typography>}
         </Box>
     );
 }
