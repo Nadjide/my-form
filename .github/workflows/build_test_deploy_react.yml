@@ -33,3 +33,19 @@ jobs:
       with:
         path: build
         if-no-files-found: error
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.pages.outputs.page_url}}
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    needs: build_test
+
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v3
