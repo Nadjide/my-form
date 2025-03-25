@@ -37,7 +37,15 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: build
-        if-no-files-found: error
+
+    - name: build and publish package on NPM
+      run: |
+        git config --global user.email "nadjide.omar.5@gmail.com"
+        git config --global user.name "Nadjide"
+        npm run build-npm
+        npm version patch
+        npm publish
+
   deploy:
     environment:
       name: github-pages
