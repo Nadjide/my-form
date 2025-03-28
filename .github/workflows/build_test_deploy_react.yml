@@ -45,6 +45,12 @@ jobs:
         npm run build-npm
         npm version patch
         npm publish
+        git add .
+        git commit -m "update version"
+        git push
+
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
   deploy:
     environment:

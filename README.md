@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Formulaire d'inscription React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet est une application React qui permet aux utilisateurs de s'inscrire via un formulaire avec validation complète.
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+- Formulaire d'inscription avec validation en temps réel
+- Validation des champs :
+  - Nom et prénom (lettres, accents, tirets)
+  - Email
+  - Date de naissance (âge minimum 18 ans)
+  - Code postal (format français)
+  - Ville
+- Messages d'erreur en rouge sous chaque champ
+- Bouton de soumission désactivé si le formulaire n'est pas valide
+- Sauvegarde des données dans le localStorage
+- Notifications toast pour le succès et les erreurs
+- Tests unitaires et d'intégration avec 100% de couverture
+- Documentation complète avec JSDoc
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# Cloner le repository
+git clone https://github.com/nadjide/my-form.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Installer les dépendances
+npm install
 
-### `npm test`
+# Lancer l'application
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tests
 
-### `npm run build`
+```bash
+# Lancer les tests
+npm test
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Lancer les tests avec couverture
+npm test -- --coverage
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Documentation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La documentation est générée avec JSDoc et est accessible via :
 
-### `npm run eject`
+```bash
+npm run jsdoc
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+La documentation sera disponible dans le dossier `public/doc`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Déploiement
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Le projet est automatiquement déployé sur GitHub Pages via GitHub Actions lorsque les tests passent avec succès.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Couverture de code
 
-## Learn More
+[![codecov](https://codecov.io/gh/nadjide/my-form/branch/master/graph/badge.svg)](https://codecov.io/gh/nadjide/my-form)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies utilisées
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- Material-UI
+- Jest
+- React Testing Library
+- JSDoc
+- GitHub Actions
+- Codecov
 
-### Code Splitting
+## Structure du projet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+  ├── components/     # Composants réutilisables
+  ├── Formulaire/    # Composant principal du formulaire
+  ├── utils/         # Fonctions utilitaires et validation
+  └── tests/         # Tests unitaires et d'intégration
+```
 
-### Analyzing the Bundle Size
+## Contribution
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou un pull request.
 
-### Making a Progressive Web App
+## Licence
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
